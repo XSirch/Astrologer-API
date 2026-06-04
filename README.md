@@ -1,13 +1,13 @@
-# High Precision Astrology API
+﻿# High Precision Astrology API
 
-Astrologer API lets you add **professional-grade astrology features** to any app — fast.  
+Astrologer API lets you add **professional-grade astrology features** to any app â€” fast.  
 It delivers **plug-and-play SVG charts**, **rich astrological data**, and **AI-optimized XML context** for natal, synastry, transits, composites, returns, and moon phases.
 
 -   NASA-grade astronomical accuracy
 -   Production-ready JSON + beautiful SVGs
 -   Used in astrology apps, compatibility/dating systems, dashboards and SaaS tools
 
-👉 Ready to use it? Subscribe on RapidAPI: <a href="https://www.kerykeion.net/astrologer-api/subscribe" target="_blank">https://www.kerykeion.net/astrologer-api/subscribe</a>
+ðŸ‘‰ Ready to use it? Subscribe on RapidAPI: <a href="https://www.kerykeion.net/astrologer-api/subscribe" target="_blank">https://www.kerykeion.net/astrologer-api/subscribe</a>
 
 Chart examples:
 
@@ -113,7 +113,7 @@ Use these endpoints when you only need structured astrological data without rend
 
 ### Moon Phase Endpoints
 
-Dedicated endpoints for detailed lunar phase analysis. These use a simplified request model (no `subject` wrapper — just date/time and coordinates).
+Dedicated endpoints for detailed lunar phase analysis. These use a simplified request model (no `subject` wrapper â€” just date/time and coordinates).
 
 -   `/api/v5/moon-phase` (POST) - Detailed moon phase for a specific date/time and location
 -   `/api/v5/moon-phase/now-utc` (POST) - Current moon phase at Greenwich (UTC)
@@ -140,11 +140,11 @@ These endpoints accept the same parameters as their corresponding chart-data end
 -   <a href="https://www.kerykeion.net/astrologer-api-swagger/" target="_blank">Swagger OpenAPI (interactive)</a>
 -   <a href="https://www.kerykeion.net/astrologer-api-redoc/" target="_blank">Redoc OpenAPI (reference)</a>
 -   <a href="https://www.kerykeion.net/content/astrologer-api/" target="_blank">Full Documentation</a>
--   <a href="https://kerykeion.net/astrologer-api/llms-full.txt" target="_blank">llms-full.txt</a> — single-file docs for LLM ingestion
+-   <a href="https://kerykeion.net/astrologer-api/llms-full.txt" target="_blank">llms-full.txt</a> â€” single-file docs for LLM ingestion
 
 ## Use with AI coding agents
 
-Let your coding agent build with Astrologer API — two paths depending on agent type.
+Let your coding agent build with Astrologer API â€” two paths depending on agent type.
 
 **Agents with skill support** (Claude Code, Cursor, Windsurf, Cline, Gemini, Copilot, Goose, OpenCode, Roo):
 
@@ -152,7 +152,7 @@ Let your coding agent build with Astrologer API — two paths depending on agent
 npx skills add g-battaglia/Astrologer-API
 ```
 
-**For agents without skill support** — paste this prompt:
+**For agents without skill support** â€” paste this prompt:
 
 ```text
 Use the Astrologer API to build [feature].
@@ -162,7 +162,7 @@ Fetch that file first, then implement.
 
 Full install guide (all agents): <a href="https://kerykeion.net/skills/astrologer-api" target="_blank">kerykeion.net/skills/astrologer-api</a>
 
-## Copy‑paste examples
+## Copyâ€‘paste examples
 
 ### 1) Natal chart (SVG + data)
 
@@ -219,7 +219,7 @@ Make the SVG background transparent:
 ... -d '{ "subject": { /* as above */ }, "transparent_background": true }'
 ```
 
-Data‑only variant:
+Dataâ€‘only variant:
 
 ```bash
 curl -X POST 'https://astrologer.p.rapidapi.com/api/v5/chart-data/birth-chart' \
@@ -320,7 +320,7 @@ Response (shape):
         "timestamp": 750251520,
         "datestamp": "Sun, 10 Oct 1993 11:12:00 +0000",
         "sun": { "sunrise_timestamp": "07:15", "sunset_timestamp": "18:18", "solar_noon": "12:47", "..." : "..." },
-        "moon": { "phase": 0.807, "phase_name": "Waning Crescent", "illumination": "32%", "emoji": "🌘", "..." : "..." },
+        "moon": { "phase": 0.807, "phase_name": "Waning Crescent", "illumination": "32%", "emoji": "ðŸŒ˜", "..." : "..." },
         "location": { "latitude": "52", "longitude": "0", "precision": 0 }
     }
 }
@@ -375,7 +375,7 @@ Response (shape):
 }
 ```
 
-The `context` string is structured XML with planetary positions, aspects, houses, and distributions — ready to inject into any AI prompt. Available for all chart types, subject, now, and moon phase.
+The `context` string is structured XML with planetary positions, aspects, houses, and distributions â€” ready to inject into any AI prompt. Available for all chart types, subject, now, and moon phase.
 
 ## Options at a glance
 
@@ -390,16 +390,16 @@ There are two kinds of options:
 -   Rendering options (only for /charts/\* endpoints):
     -   theme: light, dark, dark-high-contrast, classic, strawberry, black-and-white
     -   language: EN, FR, PT, ES, TR, RU, IT, CN, DE, HI
-    -   style: "classic" (default) or "modern" — selects the chart wheel layout
-    -   show_zodiac_background_ring: true (default) — colored zodiac wedges behind the wheel (modern style only)
-    -   double_chart_aspect_grid_type: "list" (default) or "table" — aspect display format for dual charts
+    -   style: "classic" (default) or "modern" â€” selects the chart wheel layout
+    -   show_zodiac_background_ring: true (default) â€” colored zodiac wedges behind the wheel (modern style only)
+    -   double_chart_aspect_grid_type: "list" (default) or "table" â€” aspect display format for dual charts
     -   split_chart: true to receive wheel and grid separately
     -   transparent_background: true for transparent SVG background
     -   show_house_position_comparison: false hides the house comparison table and widens the SVG layout
     -   show_cusp_position_comparison: false hides cusp comparison grids on dual charts (Synastry, Transit dual wheels, DualReturnChart)
     -   show_degree_indicators: false hides radial lines and degree numbers around the wheel (single and dual charts)
     -   show_aspect_icons: false hides aspect icons on aspect lines
-    -   custom_title: short (≤40 chars) override for the title printed on the chart
+    -   custom_title: short (â‰¤40 chars) override for the title printed on the chart
 
 Quick example with custom weights:
 
@@ -502,8 +502,8 @@ Provide a short (`<= 40` chars) `custom_title` to override the text rendered abo
 
 Choose between two chart wheel layouts using the `style` parameter (default: `"classic"`):
 
-- `"classic"` — traditional concentric wheel with houses and planets
-- `"modern"` — concentric ring layout with a contemporary aesthetic
+- `"classic"` â€” traditional concentric wheel with houses and planets
+- `"modern"` â€” concentric ring layout with a contemporary aesthetic
 
 <table>
   <tr>
@@ -536,8 +536,8 @@ When using `"modern"`, you can also control the colored zodiac wedges behind the
 
 For dual charts (synastry, transit, composite, returns), you can choose how aspects are displayed with `double_chart_aspect_grid_type`:
 
-- `"list"` (default) — vertical list of aspects
-- `"table"` — grid/matrix table of aspects
+- `"list"` (default) â€” vertical list of aspects
+- `"table"` â€” grid/matrix table of aspects
 
 ```json
 {
@@ -653,7 +653,7 @@ All data endpoints return enriched point data with these fields (added in the ke
 
 House cusp speeds are now computed via Swiss Ephemeris `houses_ex2()` instead of returning `null` or `360.0`.
 
-These fields are always present in the response — no request parameters needed.
+These fields are always present in the response â€” no request parameters needed.
 
 ## House systems
 
@@ -745,7 +745,7 @@ The API enforces strict input validation and **does not allow extra fields** in 
 
 ### Common Field Name Mistakes
 
-| ❌ Wrong              | ✅ Correct                 | Notes                                                               |
+| âŒ Wrong              | âœ… Correct                 | Notes                                                               |
 | --------------------- | -------------------------- | ------------------------------------------------------------------- |
 | `country`             | `nation`                   | Use 2-letter ISO 3166-1 alpha-2 code (e.g., "US", "GB")             |
 | `state`               | Include in `city`          | Write `"city": "Amherst, Massachusetts"` instead of separate fields |
@@ -767,11 +767,11 @@ The API enforces strict input validation and **does not allow extra fields** in 
 This also applies to other administrative divisions:
 
 -   `"city": "Milan, Lombardy"` or just `"city": "Milan"`
--   `"city": "Paris, Île-de-France"` or just `"city": "Paris"`
+-   `"city": "Paris, ÃŽle-de-France"` or just `"city": "Paris"`
 
 ### Other Common Issues
 
--   **422 Unprocessable Entity**: Double‑check required fields (subject.year/month/day/hour/minute and location). `/chart-data/*` endpoints reject rendering options such as theme, language, split_chart, transparent_background, show_house_position_comparison, show_cusp_position_comparison, show_degree_indicators, show_aspect_icons, custom_title.
+-   **422 Unprocessable Entity**: Doubleâ€‘check required fields (subject.year/month/day/hour/minute and location). `/chart-data/*` endpoints reject rendering options such as theme, language, split_chart, transparent_background, show_house_position_comparison, show_cusp_position_comparison, show_degree_indicators, show_aspect_icons, custom_title.
 -   **Timezone errors**: Use a valid tz database name (e.g. "Europe/Rome").
 -   **Empty SVG or missing wheel/grid**: Use `/chart/*` endpoints for rendering. `/chart-data/*` never return SVG.
 
@@ -832,12 +832,81 @@ The SVGs are responsive by default. You can control their size via the container
 }
 ```
 
+
+
+
+
+
+## Self-hosting
+
+Astrologer API is open source (AGPLv3) and can be self-hosted on any server that runs Python 3.11+.
+
+### Prerequisites
+
+- Python 3.11 or newer
+- [uv](https://docs.astral.sh/uv/getting-started/installation/) (recommended package manager)
+
+### Installation
+
+```bash
+git clone https://github.com/XSirch/Astrologer-API.git
+cd Astrologer-API
+
+# Install dependencies
+uv sync
+```
+
+### Environment variables
+
+Copy `.env.example` to `.env` and fill in the values:
+
+```bash
+cp .env.example .env
+```
+
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `ENV_TYPE` | No | `dev` / `test` / `production` (default: `production`) |
+| `RAPID_API_SECRET_KEY` | Production | Proxy secret from RapidAPI Provider Dashboard |
+| `ASTROLOGER_STUDIO_SECRET_KEY` | No | Proxy secret for Astrologer Studio (optional) |
+| `PRIVATE_ASTROLOGER_API_SECRET_KEY` | No | Internal access key (optional) |
+| `RAPID_API_KEY` | No | Consumer key for internal health checks (optional) |
+| `LOG_LEVEL` | No | `DEBUG` / `INFO` / `WARNING` / `ERROR` (default: `INFO`) |
+
+> In `ENV_TYPE=dev` mode the authentication middleware is **disabled** - safe for local development only.
+
+### Running locally (dev mode)
+
+```bash
+ENV_TYPE=dev uv run uvicorn app.main:app --reload --log-level debug
+```
+
+Interactive docs available at <http://localhost:8000/docs>.
+
+### Running in production
+
+```bash
+ENV_TYPE=production uv run uvicorn app.main:app --host 0.0.0.0 --port 8080 --workers 2
+```
+
+Or use the included `Procfile` for Heroku-compatible platforms (Railway, Render, Fly.io):
+
+```
+web: uvicorn app.main:app --host=0.0.0.0 --port=8080
+```
+
+### Running tests
+
+```bash
+ENV_TYPE=test uv run pytest -v
+```
+
 ## Subscription and support
 
 Subscribe: <a href="https://rapidapi.com/gbattaglia/api/astrologer/pricing" target="_blank">https://rapidapi.com/gbattaglia/api/astrologer/pricing</a>
 
 If you need higher quotas or a custom plan beyond the default tiers, reach out via [kerykeion.astrology@gmail.com](mailto:kerykeion.astrology@gmail.com) to discuss tailored options.
 
-Licensing note: Astrologer API is open source (AGPLv3). Using the hosted API via RapidAPI is allowed in any app, including closed‑source since is a third-party service.
+Licensing note: Astrologer API is open source (AGPLv3). Using the hosted API via RapidAPI is allowed in any app, including closedâ€‘source since is a third-party service.
 
 <a href="https://github.com/g-battaglia/Astrologer-API" target="_blank">Astrologer-API Source Code</a>
