@@ -10,7 +10,7 @@ from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.exceptions import RequestValidationError
 
-from .routers import misc, charts, data, context, moon_phase
+from .routers import misc, charts, data, context, moon_phase, locations
 from .config.settings import settings
 from .middleware.secret_key_checker_middleware import SecretKeyCheckerMiddleware
 from .utils.validation_helpers import format_extra_field_error
@@ -44,6 +44,8 @@ app.include_router(charts.router, tags=["Charts"])
 app.include_router(data.router, tags=["Chart Data"])
 app.include_router(context.router, tags=["AI Context"])
 app.include_router(moon_phase.router, tags=["Moon Phase"])
+app.include_router(locations.router, tags=["Locations"])
+app.include_router(locations.router, prefix="/api/v5", tags=["Locations"])
 app.include_router(misc.router, tags=["Miscellaneous"])
 
 
@@ -126,10 +128,12 @@ else:
 
 
 # CORS Middleware
+# Use configured origins; fallback to empty list in production if not set.
+origins = settings.allowed_cors_origins if settings.allowed_cors_origins else []
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
+    allow_origins=origins,
+    allow_credentials=False if not origins else True,
+    allow_methods=["GET", "POST"],
     allow_headers=["*"],
 )

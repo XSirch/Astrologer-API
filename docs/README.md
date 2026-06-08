@@ -81,6 +81,36 @@ The fundamental unit of the API is the **Subject**. A Subject represents a speci
 1. **Coordinates** (offline, recommended): Supply all three of `latitude`, `longitude`, and `timezone`.
 2. **GeoNames** (online): Supply `geonames_username` with `city` and `nation`. The API resolves coordinates automatically. If both are provided, GeoNames takes priority and coordinates are cleared.
 
+#### City Search for Mobile Apps
+
+Self-hosted deployments can also expose a lightweight city autocomplete endpoint for mobile clients:
+
+```http
+GET /api/v5/locations/cities?q=Paris&lang=en&maxRows=10
+```
+
+This endpoint uses the server-level `GEONAMES_USERNAME` environment variable and returns normalized city data:
+
+```json
+{
+  "cities": [
+    {
+      "id": "2988507",
+      "name": "Paris",
+      "countryName": "France",
+      "countryCode": "FR",
+      "adminName": "Ile-de-France",
+      "latitude": 48.8534,
+      "longitude": 2.3488,
+      "timezone": "Europe/Paris"
+    }
+  ],
+  "cached": false
+}
+```
+
+This autocomplete endpoint is separate from `geonames_username` in chart requests: clients do not send a GeoNames username, and credentials remain on the API server.
+
 #### Transit Subject
 
 Transit endpoints use a simplified subject model (`transit_subject`) that does **not** include `zodiac_type`, `sidereal_mode`, `perspective_type`, or `houses_system_identifier`. These settings are inherited from the natal `first_subject`. The `name` field defaults to `"Transit"`.

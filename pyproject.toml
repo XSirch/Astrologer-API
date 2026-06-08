@@ -1,3 +1,10 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
 [project]
 name = "astrologer-api"
 version = "5.0.0"
@@ -9,7 +16,9 @@ dependencies = [
     "pydantic-settings",
     "starlette",
     "fastapi",
-    "uvicorn",
+    "uvicorn[standard]",
+    "gunicorn",
+    "httpx",
     "types-pytz",
     "pytz",
     "scour",

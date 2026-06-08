@@ -1,6 +1,7 @@
 import logging
-import requests
 from datetime import datetime
+
+import httpx
 
 logger = logging.getLogger(__name__)
 
@@ -16,13 +17,14 @@ def get_time_from_google():
     """Fetch current UTC time from external HTTP headers with fallback providers."""
     for url in TIME_PROVIDERS:
         try:
-            response = requests.head(url, timeout=2)
+            response = httpx.head(url, timeout=5, follow_redirects=True)
+            response.raise_for_status()
             date_header = response.headers.get("Date")
             if date_header:
-                logger.debug(f"Got time from {url}: {date_header}")
+                logger.debug("Got time from %s: %s", url, date_header)
                 return datetime.strptime(date_header, "%a, %d %b %Y %H:%M:%S GMT")
         except Exception as e:
-            logger.warning(f"Failed to get time from {url}: {e}")
+            logger.warning("Failed to get time from %s: %s", url, e)
             continue
 
     logger.error("All time providers failed")

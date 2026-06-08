@@ -10,7 +10,7 @@ import logging
 
 class SecretKeyCheckerMiddleware:
     # Paths excluded from authentication (public endpoints)
-    EXCLUDED_PATHS: set[str] = {"/health"}
+    EXCLUDED_PATHS: set[str] = {"/health", "/locations/cities", "/api/v5/locations/cities"}
 
     def __init__(self, app: ASGIApp, secret_key_names: str | list[str], secret_keys: list = []) -> None:
         self.app = app

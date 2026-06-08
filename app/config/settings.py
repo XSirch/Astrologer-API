@@ -58,6 +58,8 @@ else:
         config = load_toml(config_file)
 
 
+from pydantic import field_validator
+
 class Settings(BaseSettings):
     model_config = {"env_file": ".env", "env_file_encoding": "utf-8", "extra": "ignore"}
 
@@ -66,6 +68,7 @@ class Settings(BaseSettings):
     astrologer_studio_secret_key: str = ""
     private_astrologer_api_secret_key: str = ""
     rapid_api_key: str = ""
+    geonames_username: str = ""
     env_type: str | bool = ENV_TYPE
 
     # Log level from environment variable (takes precedence) or TOML config as fallback
@@ -80,6 +83,15 @@ class Settings(BaseSettings):
     docs_url: str | None = config["docs_url"]
     redoc_url: str | None = config["redoc_url"]
     secret_key_names: str | list[str] = config.get("secret_key_names", config.get("secret_key_name", ""))
+
+    @field_validator("debug", mode="before")
+    @classmethod
+    def _coerce_debug(cls, value):
+        if isinstance(value, bool):
+            return value
+        if isinstance(value, str):
+            return value.lower() in ("true", "1", "yes", "on")
+        return bool(value)
 
     @property
     def log_level_int(self) -> int:

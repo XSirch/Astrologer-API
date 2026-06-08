@@ -10,7 +10,7 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 
 WORKDIR /app
 
-# Copy dependency manifests first (enables layer caching)
+# Copy dependency manifests first to enable layer caching
 COPY pyproject.toml uv.lock ./
 
 # Install only production dependencies into .venv
